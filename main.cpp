@@ -1,18 +1,19 @@
 #include <iostream>
+#include <vector>
+#include <string>
 
-int digitS(int a) {
-    int s = 0;
-    while (a > 0) {
-        s += a % 10;
-        a /= 10;
+std::vector<std::string> split(const std::string& str, char delimiter) {
+    std::string temp;
+    std::vector<std::string> splitted;
+    for (const auto& c : str) {
+        if (c != delimiter) {
+            temp.push_back(c);
+        } else {
+            splitted.push_back(temp);
+            temp = "";
+        }
     }
-    return s;
-}
-
-int main() {
-    int n;
-    std::cin >> n;
-    std::cout << digitS(n);
-    return 0;
+    splitted.push_back(temp);
+    return splitted;
 }
 
